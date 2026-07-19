@@ -1,6 +1,6 @@
 ---
 name: notebook-quality
-description: Quality bar for every tutorial notebook/report in this repo (cs-ai-tutorials) — mathematical rigor, real datasets with real computed results, critical/skeptical framing of each method's failure modes, and practitioner-grade code using standard libraries. Use whenever writing, reviewing, or revising a tutorial under any domain folder (math-and-statistics, machine-learning, responsible-data-science, etc.), before marking a tutorial's PR checklist complete, or when asked to draft/build/write a new tutorial.
+description: Quality bar for every tutorial notebook/report in this repo (cs-ai-tutorials) — an accessible, beginner-friendly on-ramp before any rigor, mathematical rigor as a clearly-marked deep dive, real datasets with real computed results, critical/skeptical framing of each method's failure modes, and practitioner-grade code using standard libraries. Use whenever writing, reviewing, or revising a tutorial under any domain folder (math-and-statistics, machine-learning, responsible-data-science, etc.), before marking a tutorial's PR checklist complete, or when asked to draft/build/write a new tutorial.
 ---
 
 # Notebook quality bar for cs-ai-tutorials
@@ -8,13 +8,47 @@ description: Quality bar for every tutorial notebook/report in this repo (cs-ai-
 This repo's promise is that any tutorial takes a reader from "what is this"
 through working code to "when would I actually reach for this, and where
 does it break." Every tutorial — notebook or notebook+report — is judged
-against the four pillars below. Depth target is **comprehensive**: a
-45–90 minute read/work session per tutorial, not a quick-reference.
+against the five pillars below. Depth target is **comprehensive in
+coverage, not in difficulty**: a 45–90 minute read/work session per
+tutorial is fine and expected, but a reader who has never heard of the
+topic must be able to follow the first half without prior exposure to it.
+**Comprehensive means "doesn't skip anything," not "assumes a PhD."**
 
 Apply this in addition to (not instead of) the structural requirements in
 the repo's own `_template/` and `CONTRIBUTING.md`.
 
-## The four pillars
+## The five pillars
+
+### 0. Accessible on-ramp (read this one first — it governs all the others)
+
+Every tutorial opens with a **plain-English, beginner-friendly explanation**
+before any formal notation appears. A reader who has never heard of the
+topic should finish this opening section understanding *what problem this
+solves* and *roughly how*, with zero equations required to get there.
+
+- **Lead with an analogy or a concrete, relatable scenario**, not a
+  definition. ("Imagine a loan officer who approves..." beats "Let
+  $\hat{Y}$ be a binary classifier...".)
+- **Show a tiny, runnable code snippet or a simple visual early** — within
+  the first few sections — even before the real dataset/full implementation
+  shows up later. A reader should see the idea *in action* before being
+  asked to absorb theory.
+- **Use text formatting to guide attention, not just to decorate**: bold
+  the term being introduced the first time it's defined, use short
+  paragraphs and bullets over dense blocks, and pull out the one-sentence
+  "here's the takeaway" as its own bolded or blockquoted line when a
+  section lands a key point.
+- Write like you're explaining it to a smart friend who codes but has
+  never seen this specific topic — not like you're writing a paper
+  abstract. Avoid stacking multiple new terms in one sentence.
+- **The formal math still belongs in the tutorial** (see pillar 1) — it
+  is not cut, only moved and clearly labeled. Head the rigorous section
+  with something like "## Going deeper: the formal definition" or "##
+  The math, precisely" so a reader who wants the intuition-only version
+  knows where they can stop, and a reader who wants the proof knows where
+  to find it.
+
+### 1. Mathematical rigor
 
 ### 1. Mathematical rigor
 
@@ -84,15 +118,25 @@ the repo's own `_template/` and `CONTRIBUTING.md`.
 Each tutorial's `tutorial.ipynb` (and/or `report.md` for math-heavy splits)
 must contain, in order:
 
-1. **Intro** — what this is, why it matters, what you'll be able to do after.
-2. **Theory** — formal definitions/derivations per pillar 1.
-3. **Visuals** — at least one plot/diagram that builds intuition *before*
-   the full implementation (not just result plots at the end).
-4. **Implementation** — built incrementally, using real data (pillar 2)
+1. **Intro** — a plain-English hook: what problem this solves, told through
+   a relatable scenario or analogy, zero equations. What you'll be able to
+   do after finishing.
+2. **The idea, intuitively** — how it works, explained in plain language,
+   with a simple visual and/or a tiny runnable code snippet shown early to
+   make it concrete. This is the section a total beginner reads and comes
+   away understanding the concept. Use bold on key terms and short,
+   scannable paragraphs/bullets.
+3. **Going deeper: the formal definition** (clearly headed as the
+   rigor/deep-dive section) — formal definitions/derivations per pillar 1,
+   for the reader who wants the proof, not required to "get" the concept.
+4. **Visuals** — at least one plot/diagram that builds intuition *before*
+   the full implementation (the intro-level visual from step 2 can count,
+   but the implementation section should still build its own).
+5. **Implementation** — built incrementally, using real data (pillar 2)
    and real libraries (pillar 4).
-5. **Use cases** — where this shows up in real systems.
-6. **Limitations & debates** — required section per pillar 3.
-7. **References** — papers, docs, or books actually cited in-text, not a
+6. **Use cases** — where this shows up in real systems.
+7. **Limitations & debates** — required section per pillar 3.
+8. **References** — papers, docs, or books actually cited in-text, not a
    generic reading list.
 
 ## Build artifacts
@@ -107,6 +151,13 @@ generated and verified.
 
 Before marking a tutorial complete, verify:
 
+- [ ] A total beginner could read the intro + "idea, intuitively" sections
+      and explain the concept back in their own words, without having read
+      any equation.
+- [ ] The formal/rigorous section is clearly headed as a deep dive (e.g.
+      "Going deeper") and is not the *first* thing the reader hits.
+- [ ] Bold and short paragraphs/bullets are used to highlight key terms and
+      takeaways, not just default dense prose throughout.
 - [ ] Every metric/method has a formal definition with defined notation.
 - [ ] The dataset is real, named, sourced, and its numbers are the ones
       actually reported in the interpretive text (not placeholder numbers).
