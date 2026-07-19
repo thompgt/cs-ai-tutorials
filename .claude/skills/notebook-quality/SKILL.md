@@ -95,6 +95,14 @@ must contain, in order:
 7. **References** — papers, docs, or books actually cited in-text, not a
    generic reading list.
 
+## Build artifacts
+
+If a `tutorial.ipynb` is generated programmatically (e.g. via an `nbformat`
+build script), do not commit the build script itself — only the executed
+notebook and `README.md` belong in the tutorial's folder, matching
+`_template/`'s contents. Delete the build script once the notebook is
+generated and verified.
+
 ## Self-check before calling a tutorial done
 
 Before marking a tutorial complete, verify:
