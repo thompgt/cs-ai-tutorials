@@ -27,6 +27,9 @@ Thumbs.db
 *.parquet
 data/raw/
 
+# Scratch dataset downloads (not part of any committed tutorial)
+_dl_data_test/
+
 # Compiled binaries from DSA tutorial src/ (Java/C++) — build from source, don't commit
 *.exe
 *.o

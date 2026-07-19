@@ -18,3 +18,17 @@ dependencies:
   - pip:
       - nbconvert
       - papermill
+      - torch
+      - torchvision
+      - transformers
+      - captum
+      - shap
+      - lime
+      - dice-ml
+      - mapie
+      - pgmpy
+      - fairlearn
+      - diffprivlib
+      - linearmodels
+      - dowhy
+      - econml
