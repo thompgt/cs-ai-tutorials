@@ -1,0 +1,37 @@
+name: Execute notebooks
+
+on:
+  pull_request:
+    paths:
+      - "**/*.ipynb"
+      - "environment.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.ipynb"
+      - "environment.yml"
+
+jobs:
+  run-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          environment-file: environment.yml
+          activate-environment: cs-ai-tutorials
+
+      - name: Execute all notebooks
+        shell: bash -l {0}
+        run: |
+          set -e
+          notebooks=$(find . -name "*.ipynb" -not -path "./_template/*" -not -path "*/.ipynb_checkpoints/*")
+          if [ -z "$notebooks" ]; then
+            echo "No notebooks to execute yet."
+            exit 0
+          fi
+          for nb in $notebooks; do
+            echo "Executing $nb"
+            jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 "$nb"
+          done

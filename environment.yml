@@ -1,0 +1,20 @@
+name: cs-ai-tutorials
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - jupyterlab
+  - notebook
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scipy
+  - scikit-learn
+  - sympy
+  - networkx
+  - statsmodels
+  - pip
+  - pip:
+      - nbconvert
+      - papermill
