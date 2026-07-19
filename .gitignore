@@ -26,3 +26,10 @@ Thumbs.db
 *.csv.gz
 *.parquet
 data/raw/
+
+# Compiled binaries from DSA tutorial src/ (Java/C++) — build from source, don't commit
+*.exe
+*.o
+*.obj
+*.class
+*.out

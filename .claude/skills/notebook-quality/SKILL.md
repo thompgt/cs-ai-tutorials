@@ -139,6 +139,36 @@ must contain, in order:
 8. **References** — papers, docs, or books actually cited in-text, not a
    generic reading list.
 
+## Compiled-language tutorials (e.g. `data-structures-algorithms`)
+
+Some tutorials (algorithms implemented in Java or C++ rather than Python)
+compile and run real code from the notebook via `subprocess`, instead of
+running Python directly. The same pillars apply — pillar 4 ("practitioner
+code quality") specifically means the Java/C++ source is a real,
+compilable, idiomatic implementation, and pillar 2 ("real numbers") means
+every reported number (comparisons, timings, output) comes from actually
+executing the compiled binary, not a hand-written or simulated stand-in.
+
+- Keep the Java/C++ source in `src/<name>.cpp` or `src/<name>.java`, and
+  compile/run it from a notebook code cell with `subprocess` so the
+  executed notebook shows the real compile step and real program output.
+- **On this Windows dev machine, always compile C++ with static linking**:
+  `g++ -O2 -std=c++17 -static -static-libgcc -static-libstdc++ file.cpp -o file.exe`.
+  Plain dynamic linking intermittently fails with
+  `collect2.exe: error: ld returned 116 exit status` due to a Windows
+  Defender real-time-protection false positive on freshly-linked
+  dynamically-linked MinGW binaries — this is unrelated to the C++ code's
+  correctness and is not a real toolchain bug.
+- Do not commit compiled binaries (`.exe`, `.o`, `.class`, etc.) — they're
+  gitignored repo-wide. Only the source file(s), the executed notebook, and
+  the README belong in the tutorial folder.
+- Pick one language per algorithm based on fit (e.g. node-based/OOP-heavy
+  structures suit Java; low-level/competitive-programming-style topics suit
+  C++), not uniformly across the whole domain.
+- Python is still used in the same notebook for visuals (matplotlib) and
+  for driving/benchmarking the compiled binary — it does not need to also
+  reimplement the algorithm.
+
 ## Build artifacts
 
 If a `tutorial.ipynb` is generated programmatically (e.g. via an `nbformat`
