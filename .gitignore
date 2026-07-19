@@ -27,8 +27,10 @@ Thumbs.db
 *.parquet
 data/raw/
 
-# Scratch dataset downloads (not part of any committed tutorial)
-_dl_data_test/
+# Dataset caches downloaded by tutorial notebooks (torchvision/HF datasets etc.)
+# — large/raw, regenerated on execution, must not be committed.
+# Convention: name download dirs `_<name>_data/` so this pattern catches them.
+_*_data/
 
 # Compiled binaries from DSA tutorial src/ (Java/C++) — build from source, don't commit
 *.exe
